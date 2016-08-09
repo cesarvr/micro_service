@@ -1,4 +1,7 @@
-FROM node:argon
+# node.js good practices: 
+# https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md
+
+FROM node:4.1.2
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -15,7 +18,8 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
-CMD [ "npm", "start" ]
+
+CMD [ "node", "application.js" ]
 
 
 EXPOSE 8080
