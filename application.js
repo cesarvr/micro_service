@@ -20,8 +20,8 @@ app.use('/user/', require('./lib/routes/example')(DefaultRouter()));
 
 errorHandler(app);
 
-var port = process.env.FH_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8001;
-var host = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+var port = process.env.PORT || 8080;
+var host = process.env.NODEJS_IP || '127.0.0.1';
 
 
 app.listen(port, host, function() {
