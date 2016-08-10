@@ -20,17 +20,17 @@ describe('GET /', function() {
   });
 
   it('testing /user/', function(done) {
-    superagent
-    .get('http://localhost:8001/user/')
-    .end(function(e, res){
 
+    superagent
+    .get('http://localhost:8001/user/', {f:1, params:2 })
+    .end(function(e, res){
         //console.log(res.body);
         expect(e.response.status).to.eql(500);
         expect(e.response.body).to.deep.equal({error: 'Something failed!'});
 
         assert.isEqual(e.response.status,500, 'This should be 500');
-
         done();
       });
+
   });
 });

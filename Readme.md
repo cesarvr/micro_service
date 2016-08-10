@@ -12,7 +12,6 @@
 - BodyParser
 - [Mongoskin](https://github.com/kissjs/node-mongoskin)
 
-
 ## Relevant links
 
 - Docker
