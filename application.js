@@ -25,5 +25,5 @@ var PORT = process.env.FH_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8001;
 var HOST = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 app.listen(PORT, HOST, function() {
-  console.log("Server started At: " + new Date() + " on port: " + port);
+  console.log("Server started At: " + new Date() + " on port: " + PORT);
 });

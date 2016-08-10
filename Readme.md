@@ -10,7 +10,7 @@
 - Error handling mechanism.
 - CORS
 - BodyParser
-
+- [Mongoskin](https://github.com/kissjs/node-mongoskin)
 
 
 ## Relevant links

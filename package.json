@@ -14,7 +14,10 @@
     "sinon": "^1.17.5"
   },
   "dependencies": {
-    "mongoskin": "^1.4.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongodb": "^1.4.40",
+    "mongoskin": "^1.4.13",
     "superagent": "^2.1.0",
     "underscore": "^1.8.3"
   }
