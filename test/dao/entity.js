@@ -19,10 +19,10 @@ describe('Testing User DAO', function() {
     assert.isObject(db, 'should be an new DBConnection instance');
   });
 
-  it('testing DBConnection#getCollection', function() {
+  it('testing DBConnection#use', function() {
 
-    assert.isFunction(db.getCollection, 'should DBConnection#Collection exist.');
-    user = db.getCollection('user');
+    assert.isFunction(db.use, 'should DBConnection#Collection exist.');
+    user = db.use('user');
     assert.isObject(user, 'should be an new DBConnection#Collection object');
   });
 
@@ -51,10 +51,7 @@ describe('Testing User DAO', function() {
 
     entity = new Entity(db);
 
-
     assert.isObject(entity, 'should be an new Entity instance');
-    assert.isFunction(entity.getHandler, 'getHandler should a exist.');
-    assert.isFunction(entity.getHandler(), 'handler should a exist.');
     assert.isFunction(entity.setHandler, 'setHandler should a exist.');
     assert.isFunction(entity.insert, 'insert should a exist.');
     assert.isFunction(entity.collectionName, 'collectionName should a exist.');
@@ -90,7 +87,7 @@ describe('Testing User DAO', function() {
   before(function() {
     // runs before all tests in this block
     var db = new DBConnection(MONGO_URL);
-    var user = db.getCollection('user');
+    var user = db.use('user');
     user.insert({name:'Tom', age:40, weight: 50 }, {}, function(error, results){
       id = results[0]._id;
     });
@@ -116,9 +113,31 @@ describe('Testing User DAO', function() {
     entity.findById({params: { id: id } });
   });
 
+  it('Entity#find', function(done) {
+    var handler = function(res, next, error, result) {
+      assert.isNull(error);
+      assert.isArray(result, 'return an array.');
+      done();
+    };
+
+    entity.setHandler(handler);
+
+    entity.find({params: {} });
+  });
 
 
 
+ it('Entity#removeById', function(done) {
+    var handler = function(res, next, error, result) {
+      assert.isNull(error);
+      assert.equal(result, 1, 'should be true');
 
+      done();
+    };
+    entity.setHandler(handler);
+
+    entity.removeById( { params: { id: id } } );
+
+  });
 
 });
