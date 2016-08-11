@@ -51,7 +51,7 @@ describe('Testing User DAO', function() {
 
     entity = new Entity(db);
 
-    console.log('=>', entity);
+
     assert.isObject(entity, 'should be an new Entity instance');
     assert.isFunction(entity.getHandler, 'getHandler should a exist.');
     assert.isFunction(entity.getHandler(), 'handler should a exist.');
@@ -60,13 +60,11 @@ describe('Testing User DAO', function() {
     assert.isFunction(entity.collectionName, 'collectionName should a exist.');
   });
 
-
-
-
   it('Entity#insert', function(done) {
+
     var handler = function(res, next, error, result) {
       assert.isNull(error);
-      
+
       assert.isArray(result, 'return an array.');
       var res = result[0];
 
@@ -103,9 +101,7 @@ describe('Testing User DAO', function() {
     var handler = function(res, next, error, result) {
       assert.isNull(error);
 
-
       assert.isObject(result, 'return an array.');
-
 
       assert.isDefined(result.name, 'result.name has been defined');
       assert.isDefined(result.age, 'result.age has been defined');
@@ -117,8 +113,7 @@ describe('Testing User DAO', function() {
 
     entity.setHandler(handler);
 
-    console.log('id=>', id);
-    entity.findById({params: { id:id } });
+    entity.findById({params: { id: id } });
   });
 
 
