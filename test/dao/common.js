@@ -35,4 +35,56 @@ describe('Testing DB Functions', function() {
       assert.isTrue(o, 'we should find this document. should be true');
     }).catch(function(error){ assert.isNull(error, "no error should be thrown.") });
   });
+
+
+  it('testing db#findById', function(){
+    assert.isFunction(common.findById);
+
+    return common.findById(db.use('user'), id)
+    .then(function(result){
+
+      assert.isObject(result, 'return an array.');
+
+      assert.isDefined(result.name, 'result.name has been defined');
+      assert.isDefined(result.age, 'result.age has been defined');
+      assert.isDefined(result.weight, 'result.weight has been defined');
+      assert.isDefined(result._id, 'result.id has been defined');
+
+      assert.equal(result.age, 40, 'should be 40 years old');
+
+    }).catch(function(error){ assert.isNull(error, "no error should be thrown.") });
+  });
+
+  it('testing db#findById with empty id should generate an error.', function(){
+    assert.isFunction(common.findById);
+
+    return common.findById(db.use('user'), null)
+           .catch(function(error){ assert.isNotNull(error, "no error should be thrown.") });
+  });
+
+
+  it('testing db#create with empty id should generate an error.', function(){
+    assert.isFunction(common.findById);
+
+    return common.insert(db.use('user'), {name:'Tom', age:40, weight: 50 })
+           .then(function(results){
+             var result = results[0];
+             assert.isObject(result, 'return an object.');
+
+             assert.isDefined(result.name, 'result.name has been defined');
+             assert.isDefined(result.age, 'result.age has been defined');
+             assert.isDefined(result.weight, 'result.weight has been defined');
+             assert.isDefined(result._id, 'result.id has been defined');
+
+             assert.equal(result.age, 40, 'should be 40 years old');
+           }).catch(function(error){ assert.isNotNull(error, "no error should be thrown.") });
+  });
+
+  it('testing db#removeById with empty id should generate an error.', function(){
+    assert.isFunction(common.removeById);
+
+    return common.removeById(db.use('user'), id)
+           .then(function(result){ assert.isTrue(result);  });
+  });
+
 });
