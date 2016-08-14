@@ -32,19 +32,6 @@ describe('Testing DB Functions', function() {
         });
     });
 
-    it('testing db#exist', function() {
-        assert.isFunction(common.exist);
-
-        return common.exist(db.use('user'), {
-                age: 40
-            })
-            .then(function(o) {
-                assert.isTrue(o, 'we should find this document. should be true');
-            }).catch(function(error) {
-                assert.isNull(error, "no error should be thrown.")
-            });
-
-    });
 
     it('testing db#findById handling non-db case', function() {
         assert.isFunction(common.exist);
@@ -82,6 +69,21 @@ describe('Testing DB Functions', function() {
             });
     });
 
+    it('testing db#exist', function() {
+        assert.isFunction(common.exist);
+
+        return common.exist(db.use('user'), {
+                age: 40
+            })
+            .then(function(o) {
+                assert.isTrue(o, 'we should find this document. should be true');
+            }).catch(function(error) {
+                assert.isNull(error, "no error should be thrown.")
+            });
+
+    });
+
+
     it('testing db#find', function() {
         assert.isFunction(common.removeById);
 
@@ -114,5 +116,5 @@ describe('Testing DB Functions', function() {
                 assert.isNotNull(error, "no error should be thrown.")
             });
     });
-   
+
 });
