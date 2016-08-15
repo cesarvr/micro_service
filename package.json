@@ -11,6 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "mocha-junit-reporter": "^1.12.0",
     "sinon": "^1.17.5"
   },
   "dependencies": {
