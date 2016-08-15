@@ -5,7 +5,7 @@ var DBConnection = require('../../lib/db/connection');
 var common = require('../../lib/db/common')
 var Entity = require('../../lib/db/entity');
 
-var MONGO_URL = process.env.MONGO_URL || 'mongodb://@localhost:27018/test';
+var MONGO_URL = process.env.MONGO_URL || 'mongodb://@localhost:27017/test';
 
 describe('Testing DB Functions', function() {
     var db = null;
