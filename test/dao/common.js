@@ -13,15 +13,16 @@ describe('Testing DB Functions', function() {
     var id = null;
 
     before(function() {
+        
         // runs before all tests in this block
         db = new DBConnection(MONGO_URL);
         user = db.use('user');
-        user.insert({
+        return common.insert(db.use('user'), {
             name: 'Tom',
             age: 40,
             weight: 50
-        }, {}, function(error, results) {
-            id = results.ops[0]._id;
+        }).then((r) => {
+            id = r.ops[0]._id;
         });
     });
 
@@ -48,6 +49,32 @@ describe('Testing DB Functions', function() {
             common.findById(db.use('user'), null)
         }, Error, 'Missing paramerter');
     });
+
+    it('testing db#create with empty id should generate an error.', function() {
+        assert.isFunction(common.findById);
+
+        return common.insert(db.use('user'), {
+                name: 'Tom',
+                age: 40,
+                weight: 50
+            })
+            .then(function(results) {
+                var result = results[0];
+                assert.isObject(result, 'return an object.');
+
+                assert.isDefined(result.name, 'result.name has been defined');
+                assert.isDefined(result.age, 'result.age has been defined');
+                assert.isDefined(result.weight, 'result.weight has been defined');
+                assert.isDefined(result._id, 'result.id has been defined');
+
+                assert.equal(result.age, 40, 'should be 40 years old');
+            }).catch(function(error) {
+                assert.isNotNull(error, "no error should be thrown.")
+            });
+    });
+
+
+
 
     it('testing db#findById', function() {
         assert.isFunction(common.findById);
@@ -94,27 +121,5 @@ describe('Testing DB Functions', function() {
     });
 
 
-    it('testing db#create with empty id should generate an error.', function() {
-        assert.isFunction(common.findById);
-
-        return common.insert(db.use('user'), {
-                name: 'Tom',
-                age: 40,
-                weight: 50
-            })
-            .then(function(results) {
-                var result = results[0];
-                assert.isObject(result, 'return an object.');
-
-                assert.isDefined(result.name, 'result.name has been defined');
-                assert.isDefined(result.age, 'result.age has been defined');
-                assert.isDefined(result.weight, 'result.weight has been defined');
-                assert.isDefined(result._id, 'result.id has been defined');
-
-                assert.equal(result.age, 40, 'should be 40 years old');
-            }).catch(function(error) {
-                assert.isNotNull(error, "no error should be thrown.")
-            });
-    });
 
 });
