@@ -31,5 +31,5 @@ errorHandler(app);
 
 
 app.listen(PORT, HOST, function() {
-  console.log("Server started At: " + new Date() + " on port: " + PORT);
+  console.log("Server ["+ HOST +"] started At: " + new Date() + "  on port: " + PORT);
 });
