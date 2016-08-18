@@ -1,0 +1,5 @@
+<testsuite name="Mocha Tests" tests="3" failures="0" errors="0" skipped="0" timestamp="Thu, 18 Aug 2016 15:09:56 GMT" time="0.075">
+<testcase classname="express rest api server" name="post object" time="0.038"/>
+<testcase classname="express rest api server" name="retrieves an object" time="0.014"/>
+<testcase classname="express rest api server" name="retrieves a collection" time="0.012"/>
+</testsuite>

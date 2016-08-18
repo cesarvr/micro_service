@@ -5,7 +5,8 @@
   "main": "application.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --recursive -R xunit test/dao/common > report/test-reports.xml",
-    "start": "node application.js"
+    "start": "node application.js",
+    "integration":"./node_modules/.bin/mocha --recursive -R xunit test/integration/integration > report/test-integration-reports.xml"
   },
   "author": "",
   "license": "ISC",
