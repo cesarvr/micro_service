@@ -3,8 +3,10 @@ var expect = require('chai').expect
 
 const URL = process.env.INTEGRATION_HOST || 'http://0.0.0.0:8001';
 
-describe('express rest api server', function(){
+describe('Integration Testing for ' + URL, function(){
   var id
+
+  console.log('Testing: ' + URL);
 
   it('post object', function(done){
     superagent.post(URL +'/user')

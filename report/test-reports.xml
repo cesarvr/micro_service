@@ -1,8 +1,0 @@
-<testsuite name="Mocha Tests" tests="6" failures="0" errors="0" skipped="0" timestamp="Mon, 15 Aug 2016 14:23:57 GMT" time="0.077">
-<testcase classname="Testing DB Functions" name="testing db#findById handling non-db case" time="0.002"/>
-<testcase classname="Testing DB Functions" name="testing db#findById handling empty parameters case" time="0"/>
-<testcase classname="Testing DB Functions" name="testing db#create with empty id should generate an error." time="0.005"/>
-<testcase classname="Testing DB Functions" name="testing db#findById" time="0.008"/>
-<testcase classname="Testing DB Functions" name="testing db#exist" time="0.003"/>
-<testcase classname="Testing DB Functions" name="testing db#find" time="0.004"/>
-</testsuite>
