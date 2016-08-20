@@ -28,8 +28,7 @@ app.use('/user', require('./lib/routes/user')(DefaultRouter(), db));
 // error handling middleware.
 errorHandler(app);
 
-
-
 app.listen(PORT, HOST, function() {
   console.log("Server ["+ HOST +"] started At: " + new Date() + "  on port: " + PORT);
+  console.log("MONGO_URL->", MONGO_URL);
 });
