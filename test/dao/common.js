@@ -14,7 +14,7 @@ describe('Testing DB Functions', function() {
     var id = null;
 
     before(function() {
-        this.timeout(10000);  
+        this.timeout(60000);  
         // runs before all tests in this block
         db = new DBConnection(MONGO_URL);
         user = db.use('user');
@@ -28,7 +28,7 @@ describe('Testing DB Functions', function() {
     });
 
     after(function() {
-        this.timeout(10000);  
+        this.timeout(60000);  
         // runs before all tests in this block
         user.removeById(id, function(o) {
             console.log('deleted')
@@ -37,7 +37,7 @@ describe('Testing DB Functions', function() {
 
 
     it('testing db#findById handling non-db case', function() {
-      this.timeout(10000);
+      this.timeout(60000);
         assert.isFunction(common.exist);
 
         assert.throws(function() {
@@ -46,7 +46,7 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#findById handling empty parameters case', function() {
-      this.timeout(10000);
+      this.timeout(60000);
         assert.isFunction(common.findById);
 
         assert.throws(function() {
@@ -55,7 +55,7 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#create with empty id should generate an error.', function() {
-      this.timeout(10000);
+      this.timeout(60000);
         assert.isFunction(common.insert);
 
         return common.insert(db.use('user'), {
@@ -82,7 +82,7 @@ describe('Testing DB Functions', function() {
 
 
     it('testing db#findById', function() {
-      this.timeout(10000);
+      this.timeout(60000);
         assert.isFunction(common.findById);
 
         return common.findById(db.use('user'), id)
@@ -103,7 +103,7 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#exist', function() {
-      this.timeout(10000);
+      this.timeout(60000);
         assert.isFunction(common.exist);
 
         return common.exist(db.use('user'), {
@@ -119,7 +119,7 @@ describe('Testing DB Functions', function() {
 
 
     it('testing db#find', function() {
-      this.timeout(10000);
+      this.timeout(60000);
         assert.isFunction(common.removeById);
 
         return common.removeById(db.use('user'), id)
