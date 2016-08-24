@@ -5,6 +5,7 @@ var DBConnection = require('../../lib/db/connection');
 var common = require('../../lib/db/common')
 var Entity = require('../../lib/db/entity');
 
+
 var MONGO_URL = process.env.MONGO_URL || 'mongodb://@10.43.2.243:27018/test';
 
 describe('Testing DB Functions', function() {
@@ -13,7 +14,7 @@ describe('Testing DB Functions', function() {
     var id = null;
 
     before(function() {
-        
+        this.timeout(10000);  
         // runs before all tests in this block
         db = new DBConnection(MONGO_URL);
         user = db.use('user');
@@ -27,6 +28,7 @@ describe('Testing DB Functions', function() {
     });
 
     after(function() {
+        this.timeout(10000);  
         // runs before all tests in this block
         user.removeById(id, function(o) {
             console.log('deleted')
