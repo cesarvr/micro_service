@@ -5,7 +5,7 @@ var DBConnection = require('../../lib/db/connection');
 var common = require('../../lib/db/common')
 var Entity = require('../../lib/db/entity');
 
-var MONGO_URL = process.env.MONGO_URL || 'mongodb://@localhost:27017/test';
+var MONGO_URL = process.env.MONGO_URL || 'mongodb://@10.43.2.243:27018/test';
 
 describe('Testing DB Functions', function() {
     var db = null;
@@ -35,6 +35,7 @@ describe('Testing DB Functions', function() {
 
 
     it('testing db#findById handling non-db case', function() {
+      this.timeout(10000);
         assert.isFunction(common.exist);
 
         assert.throws(function() {
@@ -43,6 +44,7 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#findById handling empty parameters case', function() {
+      this.timeout(10000);
         assert.isFunction(common.findById);
 
         assert.throws(function() {
@@ -51,7 +53,8 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#create with empty id should generate an error.', function() {
-        assert.isFunction(common.findById);
+      this.timeout(10000);
+        assert.isFunction(common.insert);
 
         return common.insert(db.use('user'), {
                 name: 'Tom',
@@ -77,6 +80,7 @@ describe('Testing DB Functions', function() {
 
 
     it('testing db#findById', function() {
+      this.timeout(10000);
         assert.isFunction(common.findById);
 
         return common.findById(db.use('user'), id)
@@ -97,6 +101,7 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#exist', function() {
+      this.timeout(10000);
         assert.isFunction(common.exist);
 
         return common.exist(db.use('user'), {
@@ -112,6 +117,7 @@ describe('Testing DB Functions', function() {
 
 
     it('testing db#find', function() {
+      this.timeout(10000);
         assert.isFunction(common.removeById);
 
         return common.removeById(db.use('user'), id)
