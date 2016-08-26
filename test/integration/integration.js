@@ -53,11 +53,26 @@ describe('Integration Testing for ' + URL, function() {
             })
     })
 
+    it('updates an object', function(done) {
+        superagent.put(URL + '/user/' + id)
+            .send({
+                name: 'Peter',
+                email: 'peter@yahoo.com'
+            })
+            .end(function(e, res) {
+                // console.log(res.body)
+                expect(e).to.eql(null)
+                expect(typeof res.body).to.eql('object')
+                expect(res.body.msg).to.eql('success')
+                done()
+            })
+    })
+
 
     it('removes an object', function(done) {
         superagent.del(URL + '/user/' + id)
             .end(function(e, res) {
-                 //console.log(res.body)
+                //console.log(res.body)
                 expect(e).to.eql(null)
                 expect(res.body).to.eql(true)
                 done()
@@ -66,4 +81,3 @@ describe('Integration Testing for ' + URL, function() {
 
 
 })
-

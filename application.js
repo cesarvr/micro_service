@@ -22,7 +22,7 @@ var errorHandler = ErrorHandler([ErrStrategies.basic,
 var app = express();
 
 app.get('/', (req,res)=>{ res.send('services deployed') });
-app.use('/user', require('./lib/routes/restful')(DefaultRouter(), db.use('user')));
+app.use('/user', require('./lib/routes/restful_decorator').routing(DefaultRouter(), db.use('user')));
 
 // error handling middleware.
 errorHandler(app);

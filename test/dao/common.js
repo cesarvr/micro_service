@@ -37,8 +37,7 @@ describe('Testing DB Functions', function() {
 
 
     it('testing db#findById handling non-db case', function() {
-      this.timeout(60000);
-        assert.isFunction(common.exist);
+        assert.isFunction(common.findById);
 
         assert.throws(function() {
             common.findById(null, null)
@@ -51,10 +50,10 @@ describe('Testing DB Functions', function() {
 
         assert.throws(function() {
             common.findById(db.use('user'), null)
-        }, Error, 'Missing paramerter');
+        }, Error, 'Missing parameter');
     });
 
-    it('testing db#create with empty id should generate an error.', function() {
+    it('testing db#create should create a new document in mongodb', function() {
       this.timeout(60000);
         assert.isFunction(common.insert);
 
@@ -79,10 +78,27 @@ describe('Testing DB Functions', function() {
     });
 
 
+    it('testing db#updateById should update a new document in mongodb', function() {
+      this.timeout(60000);
+        assert.isFunction(common.updateById);
+
+        return common.updateById(db.use('user'), id, {
+                name: 'Pepe',
+                age: 55,
+                weight: 350
+            })
+            .then(function(results) {
+                console.log(' updateById => ', results)
+                assert.deepEqual(results, { ok: 0, nModified: 1, n: 1 }, 'should return { ok: 1, nModified: 1, n: 1 }');
+            }).catch(function(error) {
+                assert.isNotNull(error, "no error should be thrown.")
+            });
+    });
+
+
 
 
     it('testing db#findById', function() {
-      this.timeout(60000);
         assert.isFunction(common.findById);
 
         return common.findById(db.use('user'), id)
@@ -95,9 +111,10 @@ describe('Testing DB Functions', function() {
                 assert.isDefined(result.weight, 'result.weight has been defined');
                 assert.isDefined(result._id, 'result.id has been defined');
 
-                assert.equal(result.age, 40, 'should be 40 years old');
+                assert.equal(result.age, 55, 'should be 55 years old');
 
             }).catch(function(error) {
+                console.log('error=>', error);
                 assert.isNull(error, "no error should be thrown.")
             });
     });
