@@ -14,7 +14,7 @@ describe('Testing DB Functions', function() {
     var id = null;
 
     before(function() {
-        this.timeout(60000);  
+        this.timeout(60000);
         // runs before all tests in this block
         db = new DBConnection(MONGO_URL);
         user = db.use('user');
@@ -28,7 +28,7 @@ describe('Testing DB Functions', function() {
     });
 
     after(function() {
-        this.timeout(60000);  
+        this.timeout(60000);
         // runs before all tests in this block
         user.removeById(id, function(o) {
             console.log('deleted')
@@ -45,7 +45,7 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#findById handling empty parameters case', function() {
-      this.timeout(60000);
+        this.timeout(60000);
         assert.isFunction(common.findById);
 
         assert.throws(function() {
@@ -54,7 +54,7 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#create should create a new document in mongodb', function() {
-      this.timeout(60000);
+        this.timeout(60000);
         assert.isFunction(common.insert);
 
         return common.insert(db.use('user'), {
@@ -79,7 +79,6 @@ describe('Testing DB Functions', function() {
 
 
     it('testing db#updateById should update a new document in mongodb', function() {
-      this.timeout(60000);
         assert.isFunction(common.updateById);
 
         return common.updateById(db.use('user'), id, {
@@ -87,10 +86,8 @@ describe('Testing DB Functions', function() {
                 age: 55,
                 weight: 350
             })
-            .then(function(results) {
-                console.log(' updateById => ', results)
-                assert.deepEqual(results, { ok: 0, nModified: 1, n: 1 }, 'should return { ok: 1, nModified: 1, n: 1 }');
-            }).catch(function(error) {
+            .then(() => assert.deepEqual(ret, { ok: 1, nModified: 1, n: 1 }) )
+            .catch(function(error) {
                 assert.isNotNull(error, "no error should be thrown.")
             });
     });
@@ -120,7 +117,7 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#exist', function() {
-      this.timeout(60000);
+        this.timeout(60000);
         assert.isFunction(common.exist);
 
         return common.exist(db.use('user'), {
@@ -136,7 +133,7 @@ describe('Testing DB Functions', function() {
 
 
     it('testing db#find', function() {
-      this.timeout(60000);
+        this.timeout(60000);
         assert.isFunction(common.removeById);
 
         return common.removeById(db.use('user'), id)
