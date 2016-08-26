@@ -60,10 +60,8 @@ describe('Integration Testing for ' + URL, function() {
                 email: 'peter@yahoo.com'
             })
             .end(function(e, res) {
-                // console.log(res.body)
                 expect(e).to.eql(null)
-                expect(typeof res.body).to.eql('object')
-                expect(res.body.msg).to.eql('success')
+                expect(res.body).to.deep.equal({ ok: 1, nModified: 1, n: 1 });
                 done()
             })
     })
