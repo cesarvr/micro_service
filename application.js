@@ -9,9 +9,9 @@ var DefaultRouter = require('./lib/utils/routers/default');
 var ErrorHandler = require('./lib/utils/errors/util');
 var ErrStrategies = require('./lib/utils/errors/basic');
 
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://@10.43.2.243:27018/test';
-const PORT = 8080;
-const HOST = '0.0.0.0';
+var MONGO_URL = process.env.MONGO_URL || 'mongodb://@10.43.2.243:27018/test';
+var PORT = 8080;
+var HOST = '0.0.0.0';
 
 var db = new DBConnection(MONGO_URL);
 
