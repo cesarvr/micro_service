@@ -1,0 +1,16 @@
+DB_URL:  mongodb://@10.42.1.231:27017/test
+deleted
+<testsuite name="Mocha Tests" tests="8" failures="1" errors="1" skipped="0" timestamp="Wed, 07 Sep 2016 08:48:36 GMT" time="0.129">
+<testcase classname="Testing DB Functions" name="testing db#isRegisteredBefore testing RegisteredLogin." time="0.002"><failure>User is registered
+Error: User is registered
+    at Object.newError (lib/utils/util.js:4:17)
+    at Object.isRegisteredBefore (lib/controller/login.js:23:20)
+    at Context.&lt;anonymous&gt; (test/unit/controller/login/user.js:35:18)</failure></testcase>
+<testcase classname="Testing DB Functions" name="testing db#findById handling non-db case" time="0.001"/>
+<testcase classname="Testing DB Functions" name="testing db#findById handling empty parameters case" time="0"/>
+<testcase classname="Testing DB Functions" name="testing db#create should create a new document in mongodb" time="0.007"/>
+<testcase classname="Testing DB Functions" name="testing db#updateById should update a new document in mongodb" time="0.006"/>
+<testcase classname="Testing DB Functions" name="testing db#findById" time="0.01"/>
+<testcase classname="Testing DB Functions" name="testing db#exist" time="0.004"/>
+<testcase classname="Testing DB Functions" name="testing db#find" time="0.004"/>
+</testsuite>

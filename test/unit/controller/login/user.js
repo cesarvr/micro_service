@@ -2,8 +2,8 @@
 var superagent = require('superagent');
 var expect = require('chai').expect;
 var assert = require('chai').assert;
-var DBConnection = require('../../../lib/db/connection');
-var login = require('../../../lib/controller/login');
+var DBConnection = require('../../../../lib/db/connection');
+var login = require('../../../../lib/controller/login');
 
 
 

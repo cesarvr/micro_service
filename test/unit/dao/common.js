@@ -1,9 +1,8 @@
 var superagent = require('superagent');
 var expect = require('chai').expect;
 var assert = require('chai').assert;
-var DBConnection = require('../../lib/db/connection');
-var common = require('../../lib/db/common')
-var Entity = require('../../lib/db/entity');
+var DBConnection = require('../../../lib/db/connection');
+var common = require('../../../lib/db/common')
 
 
 var MONGO_URL = process.env.MONGO_URL || 'mongodb://@10.43.2.243:27018/test';
@@ -14,7 +13,7 @@ describe('Testing DB Functions', function() {
     var id = null;
 
     before(function() {
-        this.timeout(60000);
+
         // runs before all tests in this block
         db = new DBConnection(MONGO_URL);
         user = db.use('user');
@@ -28,7 +27,7 @@ describe('Testing DB Functions', function() {
     });
 
     after(function() {
-        this.timeout(60000);
+
         // runs before all tests in this block
         user.removeById(id, function(o) {
             console.log('deleted')
@@ -54,7 +53,7 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#create should create a new document in mongodb', function() {
-        this.timeout(60000);
+
         assert.isFunction(common.insert);
 
         return common.insert(db.use('user'), {
@@ -92,9 +91,6 @@ describe('Testing DB Functions', function() {
             });
     });
 
-
-
-
     it('testing db#findById', function() {
         assert.isFunction(common.findById);
 
@@ -117,7 +113,6 @@ describe('Testing DB Functions', function() {
     });
 
     it('testing db#exist', function() {
-        this.timeout(60000);
         assert.isFunction(common.exist);
 
         return common.exist(db.use('user'), {
@@ -133,7 +128,6 @@ describe('Testing DB Functions', function() {
 
 
     it('testing db#find', function() {
-        this.timeout(60000);
         assert.isFunction(common.removeById);
 
         return common.removeById(db.use('user'), id)

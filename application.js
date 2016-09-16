@@ -16,18 +16,21 @@ const HOST = '0.0.0.0';
 var db = new DBConnection(MONGO_URL);
 
 var errorHandler = ErrorHandler([ErrStrategies.basic,
-                                 ErrStrategies.log]);
+    ErrStrategies.log
+]);
 
 var app = express();
 
-app.get('/', (req,res)=>{ console.log('container is alive. :D'); res.send('services deployed') });
-app.use('/user', require('./lib/routes/restful_decorator').routing(DefaultRouter(), db.use('user')));
+app.get('/', (req, res) => {
+    res.send('services deployed here.');
+});
 
+app.use('/user', require('./lib/routes/restful_decorator').routing(DefaultRouter(), db.use('user')));
 
 // error handling middleware.
 errorHandler(app);
 
 app.listen(PORT, HOST, function() {
-  console.log("Server ["+ HOST +"] started At: " + new Date() + "  on port: " + PORT);
-  console.log("MONGO_URL->", MONGO_URL);
+    console.log("Server [" + HOST + "] started At: " + new Date() + "  on port: " + PORT);
+    console.log("MONGO_URL->", MONGO_URL);
 });

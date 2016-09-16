@@ -1,7 +1,7 @@
 # node.js good practices: 
 # https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md
 
-FROM node:4.1.2
+FROM node:argon
 
 # Create app directory
 RUN mkdir -p /usr/src/app

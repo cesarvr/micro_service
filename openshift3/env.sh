@@ -1,0 +1,7 @@
+#Testing env
+
+export MONGODB_DATABASE=test
+export DATABASE_SERVICE_NAME=MONGODB
+export MONGODB_SERVICE_HOST=10.42.1.231
+
+env | grep MONGO

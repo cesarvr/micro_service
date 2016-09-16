@@ -79,7 +79,7 @@
                         "from": {
                             "kind": "ImageStreamTag",
                             "namespace": "${NAMESPACE}",
-                            "name": "centos7-s2i-nodejs:latest"
+                            "name": "hell-nodejs:latest"
                         }
                     }
                 },
@@ -172,10 +172,11 @@
                                 }
                             ],
                             "readinessProbe": {
-                                "timeoutSeconds": 3,
-                                "initialDelaySeconds": 3,
+                                "timeoutSeconds": 10,
+                                "initialDelaySeconds": 10,
                                 "httpGet": {
                                     "path": "/",
+                                    "scheme": "HTTP",
                                     "port": 8080
                                 }
                             },
@@ -184,6 +185,7 @@
                                 "initialDelaySeconds": 30,
                                 "httpGet": {
                                     "path": "/",
+                                    "scheme": "HTTP",
                                     "port": 8080
                                 }
                             },
@@ -340,7 +342,7 @@
         "name": "SOURCE_REPOSITORY_URL",
         "displayName": "Git Repository URL",
         "description": "The URL of the repository with your application source code.",
-        "value": "https://github.com/openshift/nodejs-ex.git"
+        "value": "https://github.com/cesarvr/micro_service"
     }, {
         "name": "SOURCE_REPOSITORY_REF",
         "displayName": "Git Reference",
@@ -393,6 +395,6 @@
         "from": "[a-zA-Z0-9]{16}"
     }],
     "labels": {
-        "template": "nodejs-mongodb-example"
+        "template": "nodejs6-mongodb"
     }
 }
