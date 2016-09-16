@@ -23,6 +23,11 @@ oc login https://10.2.2.2:8443
 oc create -f openshift/node-mongo.json
 ```
 
+```sh
+docker run -d -p 8080:8080 -e "MONGO_URL=mongodb://@10.42.6.13:27017/test" -m "300M" --memory-swap "1G"  node-bench
+```
+
+
 
 ## Relevant links
 
@@ -30,3 +35,4 @@ oc create -f openshift/node-mongo.json
 - Docker
   - [Docker and Node.js Best Practices](https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md)
   - [Docker Security Bench](https://github.com/docker/docker-bench-security)
+
