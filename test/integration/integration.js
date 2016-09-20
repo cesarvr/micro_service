@@ -1,7 +1,7 @@
 var superagent = require('superagent')
 var expect = require('chai').expect
 
-const URL = process.env.INTEGRATION_HOST || 'http://0.0.0.0:8001';
+const URL = process.env.INTEGRATION_HOST || 'http://0.0.0.0:8080';
 
 describe('Integration Testing for ' + URL, function() {
     var id

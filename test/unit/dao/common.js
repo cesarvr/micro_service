@@ -1,11 +1,17 @@
 var superagent = require('superagent');
 var expect = require('chai').expect;
 var assert = require('chai').assert;
-var DBConnection = require('../../../lib/db/connection');
+var mongoskin = require('mongoskin');
+
 var common = require('../../../lib/db/common')
 
 
-var MONGO_URL = process.env.MONGO_URL || 'mongodb://@10.43.2.243:27018/test';
+var MONGO_URL = process.env.MONGO_URL || 'mongodb://@192.168.177.150:27017/test';
+
+console.log('MONGO_URL: ', MONGO_URL)
+
+
+
 
 describe('Testing DB Functions', function() {
     var db = null;
@@ -15,9 +21,13 @@ describe('Testing DB Functions', function() {
     before(function() {
 
         // runs before all tests in this block
-        db = new DBConnection(MONGO_URL);
-        user = db.use('user');
-        return common.insert(db.use('user'), {
+        var db = mongoskin.db(MONGO_URL, {
+            safe: true
+        })
+
+        user = db.collection('user');
+
+        return common.insert(user, {
             name: 'Tom',
             age: 40,
             weight: 50
@@ -40,7 +50,7 @@ describe('Testing DB Functions', function() {
 
         assert.throws(function() {
             common.findById(null, null)
-        }, Error, 'Invalid DBConnection.');
+        }, Error, 'Collection can\'t be empty.');
     });
 
     it('testing db#findById handling empty parameters case', function() {
@@ -48,7 +58,7 @@ describe('Testing DB Functions', function() {
         assert.isFunction(common.findById);
 
         assert.throws(function() {
-            common.findById(db.use('user'), null)
+            common.findById(user, null)
         }, Error, 'Missing parameter');
     });
 
@@ -56,7 +66,8 @@ describe('Testing DB Functions', function() {
 
         assert.isFunction(common.insert);
 
-        return common.insert(db.use('user'), {
+
+        return common.insert(user, {
                 name: 'Tom',
                 age: 40,
                 weight: 50
@@ -80,12 +91,16 @@ describe('Testing DB Functions', function() {
     it('testing db#updateById should update a new document in mongodb', function() {
         assert.isFunction(common.updateById);
 
-        return common.updateById(db.use('user'), id, {
+        return common.updateById(user, id, {
                 name: 'Pepe',
                 age: 55,
                 weight: 350
             })
-            .then(() => assert.deepEqual(ret, { ok: 1, nModified: 1, n: 1 }) )
+            .then(() => assert.deepEqual(ret, {
+                ok: 1,
+                nModified: 1,
+                n: 1
+            }))
             .catch(function(error) {
                 assert.isNotNull(error, "no error should be thrown.")
             });
@@ -94,7 +109,7 @@ describe('Testing DB Functions', function() {
     it('testing db#findById', function() {
         assert.isFunction(common.findById);
 
-        return common.findById(db.use('user'), id)
+        return common.findById(user, id)
             .then(function(result) {
 
                 assert.isObject(result, 'return an array.');
@@ -112,25 +127,11 @@ describe('Testing DB Functions', function() {
             });
     });
 
-    it('testing db#exist', function() {
-        assert.isFunction(common.exist);
-
-        return common.exist(db.use('user'), {
-                age: 40
-            })
-            .then(function(o) {
-                assert.isTrue(o, 'we should find this document. should be true');
-            }).catch(function(error) {
-                assert.isNull(error, "no error should be thrown.")
-            });
-
-    });
-
-
+    
     it('testing db#find', function() {
         assert.isFunction(common.removeById);
 
-        return common.removeById(db.use('user'), id)
+        return common.removeById(user, id)
             .then(function(result) {
                 assert.isTrue(result);
             });
