@@ -1,5 +1,0 @@
-<testsuite name="Mocha Tests" tests="3" failures="0" errors="0" skipped="0" timestamp="Fri, 19 Aug 2016 06:59:41 GMT" time="0.233">
-<testcase classname="Integration Testing for http://crud-node-6-node6-restful.apps.10.2.2.2.xip.io" name="post object" time="0.079"/>
-<testcase classname="Integration Testing for http://crud-node-6-node6-restful.apps.10.2.2.2.xip.io" name="retrieves an object" time="0.069"/>
-<testcase classname="Integration Testing for http://crud-node-6-node6-restful.apps.10.2.2.2.xip.io" name="retrieves a collection" time="0.077"/>
-</testsuite>

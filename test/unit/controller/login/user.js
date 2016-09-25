@@ -36,11 +36,4 @@ describe('Testing DB Functions', function() {
                 .catch(function(error){ assert.isNotNull(error, "no error should be thrown.") });
   });
 
-
-
-
-
-
-
-
 });

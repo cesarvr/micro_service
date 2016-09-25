@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --recursive -R xunit test/unit/ > report/test-reports.xml",
     "start": "node application.js",
-    "integration":"./node_modules/.bin/mocha --recursive -R xunit test/integration/integration > report/test-integration-reports.xml"
+    "integration": "./node_modules/.bin/mocha --recursive -R xunit test/integration/integration > report/test-integration-reports.xml"
   },
   "author": "",
   "license": "ISC",

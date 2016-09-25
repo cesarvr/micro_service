@@ -1,7 +1,8 @@
-# node.js good practices: 
+#node.js good practices: 
 # https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md
 
-FROM node:argon
+FROM node:latest
+
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -14,6 +15,7 @@ ENV NODEJS_IP 0.0.0.0
 # Install app dependencies
 COPY package.json /usr/src/app/
 RUN npm install
+RUN npm install mocha -g
 
 # Bundle app source
 COPY . /usr/src/app
