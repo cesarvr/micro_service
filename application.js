@@ -39,6 +39,7 @@ var company = require('./lib/routes/company').routing(DefaultRouter(), db.collec
 
 // [VALIDATE] + [DO NOT EXIST BEFORE] + Bussiness logic.
 app.use('/company', require('./lib/routes/crud').routing(company, db.collection('company'), crud));
+
 app.use('/account', require('./lib/routes/crud').routing(DefaultRouter(), db.collection('account'), crud))
 app.use('/user',    require('./lib/routes/crud').routing(DefaultRouter(), db.collection('user'), crud));
 
