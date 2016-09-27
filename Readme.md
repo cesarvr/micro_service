@@ -52,10 +52,9 @@ docker build -t node6 .
 docker run -it -d -e "MONGO_URL=mongodb://@ip-addr:27017/test" -m "300M" --memory-swap "1G" -p 8089:8080 -v $(echo $PWD):/usr/src/app --name micro_service node6 node application
 ```
 
-
 ## Relevant links
 
 - Docker
   - [Documentation](https://docs.docker.com/)
   - [Docker and Node.js Best Practices](https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md)
-  - [Docker Security Bench](https://github.com/docker/docker-bench-security)
+  - [Docker Security Bench](https://github.com/docker/docker-bench-security), good app to check vulnerabilities in your docker container.
