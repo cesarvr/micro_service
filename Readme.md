@@ -1,6 +1,6 @@
 # Basic Openshift 3.2 Node.js micro-service.
 
-Docker & Openshift 3 ready micro-service basic template.
+Docker & Openshift 3 ready micro-service template.
 
 ## Node.js basic scaffolding
 
@@ -16,9 +16,8 @@ Docker & Openshift 3 ready micro-service basic template.
 - /controller
   - put here classes to decorate crud default behaviour, *you want to implement and especial type of search*.
 
-
 - /db
-  - basic Mongodb actions.
+  - basic MongoDB actions.
   - [DAO](https://en.wikipedia.org/wiki/Data_access_object) pattern.
 
 - /util/errors
@@ -50,10 +49,7 @@ docker run -it -d -e "MONGO_URL=mongodb://@192.168.177.150:27017/test" -m "300M"
 ```
 
 
-
-
 ## Relevant links
-
 
 - Docker
   - [Docker and Node.js Best Practices](https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md)
