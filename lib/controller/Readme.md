@@ -7,7 +7,7 @@
   - resourceById
   - update
   - remove
-  - adapter: is just a function adapter to interface with Express.js routing handler.  
+  - [adapter](https://github.com/cesarvr/micro_service/blob/master/lib/controller/crud/crud.js#L38): is just a function adapter to interface with Express.js routing handler.  
 
 
 
