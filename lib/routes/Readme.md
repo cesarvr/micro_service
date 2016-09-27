@@ -14,7 +14,7 @@
 
 - company.js is just an example to showcase the decorator pattern to extend the basic behaviour of the crud.js router, example:
 
-use case: you create company entity (create/read/update/delete), but you want to avoid two companies with the same name.
+  use case: you create company entity (create/read/update/delete), but you want to avoid two companies with the same name.
 
 ``` javascript
   //creates a simple express router that put in the HTTP POST additional functionality
