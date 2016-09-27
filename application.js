@@ -34,12 +34,13 @@ app.get('/', (req, res) => {
     res.send('Services deployed here.');
 });
 
+var companyCollection = db.collection('company')
+
 // Append: MIDDLEWARES ===>  [VALIDATE] + [DO NOT EXIST BEFORE]
-var company = require('./lib/routes/company').routing(DefaultRouter(), db.collection('company'));
+var company = require('./lib/routes/company').routing(DefaultRouter(), companyCollection);
 
 // [VALIDATE] + [DO NOT EXIST BEFORE] + Bussiness logic.
-app.use('/company', require('./lib/routes/crud').routing(company, db.collection('company'), crud));
-
+app.use('/company', require('./lib/routes/crud').routing(company, companyCollection, crud));
 app.use('/account', require('./lib/routes/crud').routing(DefaultRouter(), db.collection('account'), crud))
 app.use('/user',    require('./lib/routes/crud').routing(DefaultRouter(), db.collection('user'), crud));
 

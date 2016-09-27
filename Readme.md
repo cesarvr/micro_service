@@ -1,31 +1,29 @@
 # Basic Openshift 3.2 Node.js micro-service.
 
-Docker & Openshift 3 ready micro-service template.
+Node6, Docker & Openshift 3 ready micro-service template.
 
-## Node.js basic scaffolding
+## Node.js RESTful scaffolding
 
-- Node.js 6
-
-- /ws
+folder structure:
+- ws
   - node soap client [node-soap](https://github.com/vpulim/node-soap) for quick integration with soap endpoints service.
   - long pulling functionality plus circuit breaker.
 
-- /controller/crud
+- controller/crud
   - Class for CRUD functionality.
 
-- /controller
-  - put here classes to decorate crud default behaviour, *you want to implement and especial type of search*.
+- controller
+  - Put here classes to decorate crud default behaviour, *you want to implement and especial type of search*.
 
-- /db
+- db
   - basic MongoDB actions.
   - [DAO](https://en.wikipedia.org/wiki/Data_access_object) pattern.
 
-- /util/errors
+- util/errors
   - error handling middleware.
 
-- /routers/basic
+- routers/basic
   - create a basic router with body-parser and CORS enabled.
-
 
 - Mocha framework
 - Chai assertions library.
@@ -33,8 +31,6 @@ Docker & Openshift 3 ready micro-service template.
 - CORS
 - BodyParser
 - [Mongoskin](https://github.com/kissjs/node-mongoskin)
-
-
 
 ## How to run this
 
