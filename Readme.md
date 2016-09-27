@@ -44,8 +44,11 @@ Docker & Openshift 3 ready micro-service template.
 ```
 
 ```sh
+# boot up your docker mongodb
+# docker run -d -p 27017:27017 mongo 
+
 docker build -t node6 .
-docker run -it -d -e "MONGO_URL=mongodb://@192.168.177.150:27017/test" -m "300M" --memory-swap "1G" -p 8089:8080 -v $(echo $PWD):/usr/src/app --name micro_service node6 node application
+docker run -it -d -e "MONGO_URL=mongodb://@ip-addr:27017/test" -m "300M" --memory-swap "1G" -p 8089:8080 -v $(echo $PWD):/usr/src/app --name micro_service node6 node application
 ```
 
 
