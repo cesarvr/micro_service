@@ -7,6 +7,8 @@
   - resourceById
   - update
   - remove
+  - adapter: is just a function adapter to interface with Express.js routing handler.  
+
 
 
 - crud_log just a basic class to show how to extend the CRUD API.  
