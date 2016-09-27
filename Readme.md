@@ -38,10 +38,14 @@ Docker & Openshift 3 ready micro-service template.
 
 ## How to run this
 
+### Openshift 3
+
 ```sh
  oc login https://10.2.2.2:8443    #if your are using vagrant box; https://ip-addr:8443 otherwise.   
  oc create -f openshift3/node-mongo.json
 ```
+
+### Docker
 
 ```sh
 # boot up your docker mongodb
@@ -49,9 +53,12 @@ Docker & Openshift 3 ready micro-service template.
 
 #clone the repo and jump inside.
 docker build -t node6 .
-docker run -it -d -e "MONGO_URL=mongodb://@ip-addr:27017/test" -m "300M" --memory-swap "1G" -p 8089:8080 -v $(echo $PWD):/usr/src/app --name micro_service node6 node application
+docker run -it -d -e "MONGO_URL=mongodb://@ip-addr:27017/test" -m "300M" --memory-swap "1G" -p 8080:8080 -v $(echo $PWD):/usr/src/app --name micro_service node6 node application
 ```
 
+```sh
+  http://localhost:8080
+```
 ## Relevant links
 
 - Docker
