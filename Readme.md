@@ -58,7 +58,6 @@ docker run -it -d -e "MONGO_URL=mongodb://@ip-addr:27017/test" -m "300M" --memor
 ```
 ## Relevant links
 
-- Docker
-  - [Documentation](https://docs.docker.com/)
+  - [Docker Docs](https://docs.docker.com/)
   - [Docker and Node.js Best Practices](https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md)
   - [Docker Security Bench](https://github.com/docker/docker-bench-security), good app to check vulnerabilities in your docker container.
