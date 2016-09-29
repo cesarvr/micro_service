@@ -73,7 +73,7 @@ docker run -it -d -e "MONGO_URL=mongodb://@ip-addr:27017/test" \
 ```
 
 ```sh
-  http://localhost:8080
+http://localhost:8080  #Service deployed here.
 ```
 ## Relevant links
   - [Openshift 3 Documentation](https://docs.openshift.com/enterprise/3.0/dev_guide/index.html) 
