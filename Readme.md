@@ -4,7 +4,7 @@ Node6, Docker & Openshift 3 ready micro-service template.
 
 ## Node.js RESTful scaffolding
 
-## Folder structure:
+## Folders:
 
 ### ws
   - node soap client [node-soap](https://github.com/vpulim/node-soap) for quick integration with soap endpoints service.
