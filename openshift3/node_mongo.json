@@ -79,7 +79,7 @@
                         "from": {
                             "kind": "ImageStreamTag",
                             "namespace": "${NAMESPACE}",
-                            "name": "hell-nodejs:latest"
+                            "name": "nodejs6:latest"
                         }
                     }
                 },

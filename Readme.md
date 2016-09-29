@@ -4,7 +4,7 @@ Node6, Docker & Openshift 3 ready micro-service template.
 
 ## Node.js RESTful scaffolding
 
-## Folders:
+## Folders
 
 ### ws
   - node soap client [node-soap](https://github.com/vpulim/node-soap) for quick integration with soap endpoints service.
@@ -39,7 +39,25 @@ Node6, Docker & Openshift 3 ready micro-service template.
 
 ```sh
  oc login https://10.2.2.2:8443    #if your are using vagrant box; https://ip-addr:8443 otherwise.   
+
+ 
+ # Install the openshift-template, you need to edit the template to use the appropiate builder-image for Node.js v6. 
  oc create -f openshift3/node-mongo.json
+
+# create app 
+
+oc project <your project>  # jump to the project 
+
+# create the new app, this will create two pods one node.js & mongodb. 
+oc new-app nodejs6-mongodb  
+  -p APPLICATION_NAME=<name_of_your_app> \
+     SOURCE_REPOSITORY_URL=https://github.com/cesarvr/micro_service \ 
+     DATABASE_USER=<user> \
+     DATABASE_PASSWORD=<psw> \
+     DATABASE_NAME=<dbname> \ 
+     DATABASE_ADMIN_PASSWORD=<admin_db>          
+ 
+   
 ```
 
 ### Docker
