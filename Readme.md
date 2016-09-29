@@ -26,6 +26,8 @@ Node6, Docker & Openshift 3 ready micro-service template.
 ### routers/basic
   - create a basic router with body-parser and CORS enabled.
 
+### Dependencies 
+
 - Mocha framework
 - Chai assertions library.
 - Error handling mechanism.
