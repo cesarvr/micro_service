@@ -17,7 +17,7 @@ Node6, Docker & Openshift 3 ready micro-service template.
   - Put here classes to decorate crud default behaviour, *you want to implement and especial type of search*.
 
 ### db
-  - basic MongoDB actions.
+  - basic DB CRUD actions.
   - [DAO](https://en.wikipedia.org/wiki/Data_access_object) pattern.
 
 ### util/errors
