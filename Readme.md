@@ -4,7 +4,7 @@ Node6, Docker & Openshift 3 ready micro-service template.
 
 ## Node.js RESTful scaffolding
 
-##folder structure:
+## Folder structure:
 
 ### ws
   - node soap client [node-soap](https://github.com/vpulim/node-soap) for quick integration with soap endpoints service.
@@ -13,10 +13,10 @@ Node6, Docker & Openshift 3 ready micro-service template.
 ### controller/crud
   - Class for CRUD functionality.
 
-### controller
+### controller/
   - Put here classes to decorate crud default behaviour, *you want to implement and especial type of search*.
 
-### db
+### db/
   - basic DB CRUD actions.
   - [DAO](https://en.wikipedia.org/wiki/Data_access_object) pattern.
 
