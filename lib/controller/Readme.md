@@ -22,6 +22,10 @@
  
   // it just extends the behaviour of crud. (eg: everytime you call db:create it just logs the content) 
   var debug = require('./lib/controller/crud_log/crud_decorator')(debug); 
+
+
+  //you can use this type of extension to avoid touching crud code see [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle).
+
 ```
 
 
