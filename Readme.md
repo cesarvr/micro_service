@@ -38,13 +38,11 @@ Node6, Docker & Openshift 3 ready micro-service template.
 ### Openshift 3
 
 ```sh
- oc login https://10.2.2.2:8443    #if your are using vagrant box; https://ip-addr:8443 otherwise.   
-
+oc login https://10.2.2.2:8443    #if your are using vagrant box; https://ip-addr:8443 otherwise.   
  
- # Install the openshift-template, you need to edit the template to use the appropiate builder-image for Node.js v6. 
- oc create -f openshift3/node-mongo.json
-
-# create app 
+# Install the openshift-template, you need to edit the template to use the appropiate builder-image for Node.js v6. 
+# You just need to edit the BuilderConfig object for this.  
+oc create -f openshift3/node-mongo.json
 
 oc project <your project>  # jump to the project 
 
@@ -56,8 +54,6 @@ oc new-app nodejs6-mongodb
      DATABASE_PASSWORD=<psw> \
      DATABASE_NAME=<dbname> \ 
      DATABASE_ADMIN_PASSWORD=<admin_db>          
- 
-   
 ```
 
 ### Docker
