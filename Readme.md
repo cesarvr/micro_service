@@ -64,7 +64,12 @@ oc new-app nodejs6-mongodb
 
 #clone the repo and jump inside.
 docker build -t node6 .
-docker run -it -d -e "MONGO_URL=mongodb://@ip-addr:27017/test" -m "300M" --memory-swap "1G" -p 8080:8080 -v $(echo $PWD):/usr/src/app --name micro_service node6 node application
+
+# it just create a container and make that container mount your work(current) folder. 
+docker run -it -d -e "MONGO_URL=mongodb://@ip-addr:27017/test" \
+       -m "300M" --memory-swap "1G" \ 
+       -p 8080:8080 -v $(echo $PWD):/usr/src/app  \
+       --name micro_service node6 node application 
 ```
 
 ```sh
