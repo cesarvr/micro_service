@@ -9,14 +9,14 @@
   - remove
   - [adapter](https://github.com/cesarvr/micro_service/blob/master/lib/controller/crud/crud.js#L38): is just a function adapter to interface with Express.js routing handler.   
 
-```sh
+```javascript
   // it just handle the (req,res,next) interface and inject a db creation algorithm. 
   router.post('/', controller.adapter(controller.create, collection));
 ```
 
 - crud_log just a basic class to show how to extend the CRUD API.  
 
-```sh
+```javascript
   // it just handle the (req,res,next) interface and inject a db creation algorithm. 
   var crud = require('./lib/controller/crud/crud');
  
