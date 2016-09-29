@@ -30,7 +30,6 @@ Node6, Docker & Openshift 3 ready micro-service template.
 
 - Mocha framework
 - Chai assertions library.
-- Error handling mechanism.
 - CORS
 - BodyParser
 - [Mongoskin](https://github.com/kissjs/node-mongoskin)
