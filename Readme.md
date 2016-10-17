@@ -38,6 +38,12 @@ Node6, Docker & Openshift 3 ready micro-service template.
 
 ### Openshift 3
 
+#### Using Openshift Dashboard
+![Openshift 3.x](https://github.com/cesarvr/micro_service/blob/master/docs/origin.gif)
+
+
+#### Console
+
 ```sh
 oc login https://10.2.2.2:8443    #if your are using vagrant box; https://ip-addr:8443 otherwise.   
  
