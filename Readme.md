@@ -83,7 +83,12 @@ docker run -it -d -e "MONGO_URL=mongodb://@ip-addr:27017/test" \
 http://localhost:8080  #Service deployed here.
 ```
 ## Relevant links
-  - [Openshift 3 Documentation](https://docs.openshift.com/enterprise/3.0/dev_guide/index.html) 
-  - [Docker Docs](https://docs.docker.com/)
-  - [Docker and Node.js Best Practices](https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md)
-  - [Docker Security Bench](https://github.com/docker/docker-bench-security), good app to check vulnerabilities in your docker container.
+
+### Logging 
+- [EFK](https://github.com/openshift/origin-aggregated-logging/tree/master/deployer)
+
+### Containers and Orchestration
+- [Openshift 3 Documentation](https://docs.openshift.com/enterprise/3.0/dev_guide/index.html) 
+- [Docker Docs](https://docs.docker.com/)
+- [Docker and Node.js Best Practices](https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md)
+- [Docker Security Bench](https://github.com/docker/docker-bench-security), good app to check vulnerabilities in your docker container.
