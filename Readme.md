@@ -1,4 +1,4 @@
-# Basic Openshift 3.2 Node.js micro-service.
+# Basic Openshift 3.2 Node.js Microservice.
 
 Node6, Docker & Openshift 3 ready micro-service template.
 
