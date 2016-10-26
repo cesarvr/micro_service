@@ -7,7 +7,8 @@ let errorHandling = require('./lib/utils/error-middleware/basic');
 
 app.get('/', (req, res) => res.send('Services deployed here.'));
 
-app.use('/user',restful({name:'user'}));   // this function creates a router, controller, db of a given entity.
+ // this function creates a router, controller, db of a given entity.
+app.use('/user',restful({name:'user'}));
 
 // want to create a crud with some profiling capabilities.
 let profilingDecorator = require('./lib/controller/decorator_example/crud_decorator');
