@@ -1,46 +1,30 @@
 'use strict';
 
 // version 0.1
-let express = require('express');
-
-//db
-let mongoskin = require('mongoskin');
-
-//controller
-let crud = require('./lib/controller/crud/crud');
-
-let DefaultRouter = require('./lib/utils/routers/default');
-let ErrorHandler = require('./lib/utils/errors/util');
-let ErrorStrategy = require('./lib/utils/errors/basic');
-
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://@192.168.177.150:27017/test';
-const PORT = 8080;
-const HOST = '0.0.0.0';
-
-console.log("MONGO_URL->", MONGO_URL);
-
-let db = mongoskin.db(MONGO_URL, {
-    safe: true
-});
-
-let errorHandler = ErrorHandler([
-    ErrorStrategy.basic,
-    ErrorStrategy.log
-]);
-
-let app = express();
-let companyCollection = db.collection('company')
-
-// Append: MIDDLEWARES ===>  [VALIDATE] + [DO NOT EXIST BEFORE]
-let company = require('./lib/routes/company').routing(DefaultRouter(), companyCollection);
+let app = require('express')();
+let restful = require('./lib/routes/restful');
+let errorHandling = require('./lib/utils/error-middleware/basic');
 
 app.get('/', (req, res) => res.send('Services deployed here.'));
-// [VALIDATE] + [DO NOT EXIST BEFORE] + Bussiness logic.
-app.use('/user',    require('./lib/routes/crud').routing(DefaultRouter(), db.collection('user'), crud));
 
-// error handling middleware.
-errorHandler(app);
+app.use('/user',restful({name:'user'}));   // this function creates a router, controller, db of a given entity.
 
-app.listen(PORT, HOST, function() {
-    console.log("Server [" + HOST + "] started At: " + new Date() + "  on port: " + PORT);
+// want to create a crud with some profiling capabilities.
+let profilingDecorator = require('./lib/controller/decorator_example/crud_decorator');
+app.use('/account',restful({name:'account', decorator: profilingDecorator}));
+
+/*
+  if you want another entity
+
+  app.use('/entity',restful({name:'entity'}));
+
+
+*/
+
+
+//setting-up error handling middleware.
+errorHandling(app);
+
+app.listen(8080, '0.0.0.0', function() {
+    console.log("Server started At: " + new Date() + "  on port: " + 8080);
 });

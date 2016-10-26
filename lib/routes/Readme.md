@@ -1,38 +1,42 @@
-# Routing module.
+# Routing modules.
 
-- crud.js just handle all CRUD HTTP verb's, and connect those verbs to actions using the controller/crud.
 
-``` javascript
+### restful (options)
+ - This function creates a Express.js router ready to handle RESTful calls.
+ - options
+    - name : name of the entity.
+    - route : you can pass your predefine router.
+    - decorator: you can override the default behaviour of the crud class using [decorator](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#decoratorpatternjavascript) pattern or  simple method override.
 
-  var route = DefaultRouter();   //util/routers/default.js
-  var companyCollection = db.collection('company');
-  var crud = require('./controller/crud/crud');
+```javascript
+// create entity router object.
+let entity = restful({name:'entity'});
+app.use('/entity', entity);
 
-  //creates a simple express router /company, to handle create/read/update/delete HTTP actions.
-  var companyRoute = require('./lib/routes/crud').routing(route, companyCollection, crud);  // URL hostname:port/v1/company
+// create entity router object and specify the db name.
+let entity = restful({name:'entity', db: 'my-db-name'});
+app.use('/entity', entity);
 
-  //listen for /company HTTP request.
-  app.use('/company', companyRoute);
+// create entity router object and specify new router.
+let routerWithJWToken = require('routerWithJWToken');
+let entity = restful({name:'entity', router: routerWithJWToken});
+app.use('/entity', entity);
+
+// decorator
+let fn = (crud)=>{ crud.create=()=>throw'block this' };
+let entity = restful({name:'entity', decorator: fn});
+app.use('/entity', entity);
+
 ```
 
+### company
+- Sometimes you need to implement more logic like validation, call another service first, etc. This module is an example on how to easily get this without violating the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle).
 
-- company.js is just an example to showcase the decorator pattern to extend the basic behaviour of the crud.js.
-
-  **use case:** you create company entity (create/read/update/delete), but you want to avoid two companies with the same name.
-
-``` javascript
-
-  var route = DefaultRouter();   //util/routers/default.js
-  var companyCollection = db.collection('company');
-  var crud = require('./controller/crud/crud');
-
-  //creates a simple express router that put in the HTTP POST additional functionality
-  //validates if the company exists before.
-  var company = require('./lib/routes/company').routing(route, companyCollection); //the signature here can vary what
-
-  //HTTP POST Validation + CRUD functionality, open for extension and close for modification principle.
-  var companyRoute = require('./lib/routes/crud').routing(company, companyCollection, crud);
-
-  //listen for /company HTTP request.
-  app.use('/company', companyRoute);
+```javascript
+// create entity router object.
+let company = require('company')(dbapi);
+app.use('/company', restful({
+                        name:'company',
+                        router:company
+                    }));
 ```

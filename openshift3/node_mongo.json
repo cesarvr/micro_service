@@ -79,7 +79,7 @@
                         "from": {
                             "kind": "ImageStreamTag",
                             "namespace": "${NAMESPACE}",
-                            "name": "nodejs6:latest"
+                            "name": "centos7-s2i-nodejs:latest"
                         }
                     }
                 },

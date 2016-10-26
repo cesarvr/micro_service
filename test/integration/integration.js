@@ -8,7 +8,7 @@ describe('Integration Testing for ' + URL, function() {
 
     console.log('Testing: ' + URL);
 
-    it('post object', function(done) {
+    it('POST /user', function(done) {
         superagent.post(URL + '/user')
             .send({
                 name: 'John',
@@ -25,7 +25,7 @@ describe('Integration Testing for ' + URL, function() {
             })
     })
 
-    it('retrieves an object', function(done) {
+    it('GET /user/id', function(done) {
         superagent.get(URL + '/user/' + id)
             .end(function(e, res) {
 
@@ -37,7 +37,7 @@ describe('Integration Testing for ' + URL, function() {
             })
     })
 
-    it('retrieves a collection', function(done) {
+    it('GET /user', function(done) {
         superagent.get(URL + '/user')
             .end(function(e, res) {
                 //console.log(res.body)
@@ -53,7 +53,7 @@ describe('Integration Testing for ' + URL, function() {
             })
     })
 
-    it('updates an object', function(done) {
+    it('PUT user', function(done) {
         superagent.put(URL + '/user/' + id)
             .send({
                 name: 'Peter',
@@ -61,14 +61,86 @@ describe('Integration Testing for ' + URL, function() {
             })
             .end(function(e, res) {
                 expect(e).to.eql(null)
-                expect(res.body).to.deep.equal({ ok: 1, nModified: 1, n: 1 });
+                expect(res.body).to.deep.equal({ ok: 1,  n: 1 });
                 done()
             })
     })
 
 
-    it('removes an object', function(done) {
+    it('DELETE /user', function(done) {
         superagent.del(URL + '/user/' + id)
+            .end(function(e, res) {
+                //console.log(res.body)
+                expect(e).to.eql(null)
+                expect(res.body).to.eql(true)
+                done()
+            })
+    })
+
+    /*
+        Testing decorated service.
+    */
+    it('POST /account', function(done) {
+        superagent.post(URL + '/account')
+            .send({
+                name: 'John',
+                email: 'john@rpjs.co'
+            })
+            .end(function(e, res) {
+                //  console.log(res.body)
+                var results = res.body.ops;
+                expect(e).to.eql(null)
+                expect(results.length).to.eql(1)
+                expect(results[0]._id.length).to.eql(24)
+                id = results[0]._id
+                done()
+            })
+    })
+
+    it('GET /account/id', function(done) {
+        superagent.get(URL + '/account/' + id)
+            .end(function(e, res) {
+
+                //console.log(res.body)
+
+                expect(e).to.eql(null)
+                expect(res.body._id).to.be.equal(id);
+                done()
+            })
+    })
+
+    it('GET /account', function(done) {
+        superagent.get(URL + '/account')
+            .end(function(e, res) {
+                //console.log(res.body)
+                //console.log(e)
+                var results = res.body;
+
+                expect(e).to.eql(null)
+                expect(results.length).to.be.above(0)
+                expect(results.map(function(item) {
+                    return item._id
+                })).to.contain(id)
+                done()
+            })
+    })
+
+    it('PUT account', function(done) {
+        superagent.put(URL + '/account/' + id)
+            .send({
+                name: 'Peter',
+                email: 'peter@yahoo.com'
+            })
+            .end(function(e, res) {
+                expect(e).to.eql(null)
+                expect(res.body).to.deep.equal({ ok: 1,  n: 1 });
+                done()
+            })
+    })
+
+
+    it('DELETE /account', function(done) {
+        superagent.del(URL + '/account/' + id)
             .end(function(e, res) {
                 //console.log(res.body)
                 expect(e).to.eql(null)
