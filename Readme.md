@@ -14,7 +14,7 @@ Node6, Docker & Openshift 3 ready microservice template.
   - Class for CRUD functionality.
 
 ### controller/
-  - Put here classes to decorate crud default behaviour. (eg *you want to implement and especial type of search*.)
+  - Put here classes to decorate crud default behaviour. (eg *you want to implement a special type of search*.)
 
 ### db/
   - basic DB CRUD actions.
