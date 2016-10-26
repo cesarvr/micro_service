@@ -25,6 +25,7 @@
     "mongodb": "^2.2.5",
     "mongoskin": "^2.1.0",
     "sdiscovery": "^0.1.2",
-    "superagent": "^2.1.0"
+    "superagent": "^2.1.0",
+    "winston": "^2.2.0"
   }
 }
