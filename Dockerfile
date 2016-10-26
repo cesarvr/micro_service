@@ -14,8 +14,7 @@ ENV NODEJS_IP 0.0.0.0
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN npm install
-RUN npm install mocha -g
+RUN npm install && npm install mocha node-inspector -g 
 
 # Bundle app source
 COPY . /usr/src/app
