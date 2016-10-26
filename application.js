@@ -11,16 +11,14 @@ app.use('/user',restful({name:'user'}));   // this function creates a router, co
 
 // want to create a crud with some profiling capabilities.
 let profilingDecorator = require('./lib/controller/decorator_example/crud_decorator');
+
+// new decorated crud.
 app.use('/account',restful({name:'account', decorator: profilingDecorator}));
 
 /*
-  if you want another entity
-
+  // if you want another entity
   app.use('/entity',restful({name:'entity'}));
-
-
 */
-
 
 //setting-up error handling middleware.
 errorHandling(app);

@@ -6,7 +6,7 @@ Node6, Docker & Openshift 3 ready microservice template.
 
 ## Folders
 
-### lib/routes
+### routes/
   [Documentation](https://github.com/cesarvr/micro_service/tree/master/lib/routes)
 
 ### controller/crud
