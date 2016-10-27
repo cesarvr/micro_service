@@ -4,6 +4,7 @@
 let app = require('express')();
 let restful = require('./lib/routes/restful');
 let errorHandling = require('./lib/utils/error-middleware/basic');
+let logger = require('./lib/utils/util').Logger;
 
 app.get('/', (req, res) => res.send('Services deployed here.'));
 
@@ -25,5 +26,5 @@ app.use('/account',restful({name:'account', decorator: profilingDecorator}));
 errorHandling(app);
 
 app.listen(8080, '0.0.0.0', function() {
-    console.log("Server started At: " + new Date() + "  on port: " + 8080);
+    logger.info("Server started on 0.0.0.0 port: " + 8080);
 });

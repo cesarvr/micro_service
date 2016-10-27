@@ -2,10 +2,11 @@
 
 
 ### restful (options)
- - This function creates a Express.js router ready to handle RESTful calls.
+ - This function creates a Express.js router ready to handle RESTful calls also handle the persistency and discovery. 
  - options
     - name : name of the entity.
-    - route : you can pass your predefine router.
+    - route : you can pass your predefine router with your middlewares attached.
+    - svc: here you can put the name of the [OSE3 service](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/pods_and_services.html) name, and it will discover the connection details for you.
     - decorator: you can override the default behaviour of the crud class using [decorator](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#decoratorpatternjavascript) pattern or  simple method override.
 
 ```javascript
@@ -27,6 +28,13 @@ let fn = (crud)=>{ crud.create=()=>throw'block this' };
 let entity = restful({name:'entity', decorator: fn});
 app.use('/entity', entity);
 
+
+// mongo cluster behind kubernetes service object.
+// collection name: entity
+// service name: analitics
+// it will discover the ip of the cluster, port and credentials.
+let entity = restful({name:'entity', svc: 'analitics'});
+app.use('/entity', entity);
 ```
 
 ### company
